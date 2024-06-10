@@ -26,6 +26,12 @@ const config = {
         blue: {
           1: '#0E78F9'
         },
+        sky: {
+          1: '#C9DDFF'
+        },
+        orange: {
+          1: '#FF742E'
+        },
 
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -60,6 +66,9 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         }
+      },
+      backgroundImage: {
+        hero: "url('/images/hero-background.jpg')"
       },
       borderRadius: {
         lg: 'var(--radius)',
