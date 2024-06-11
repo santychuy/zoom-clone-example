@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 'use client';
 
 import { useState } from 'react';
@@ -20,13 +21,17 @@ const MeetingID = ({ params }: MeetingIDProps) => {
   const { call, isCallLoading } = useGetCallById(params.id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
-  if (!isCallLoading || !isLoaded) return <Loading />;
+  if (!isLoaded || isCallLoading) return <Loading />;
 
   return (
     <main className="h-screen w-full">
       <StreamCall call={call}>
         <StreamTheme>
-          {!isSetupComplete ? <MeetingSetup /> : <MeetingRoom />}
+          {!isSetupComplete ? (
+            <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
+          ) : (
+            <MeetingRoom />
+          )}
         </StreamTheme>
       </StreamCall>
     </main>
