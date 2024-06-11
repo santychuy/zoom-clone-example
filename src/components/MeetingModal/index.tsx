@@ -10,7 +10,7 @@ interface MeetingModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  buttonText: string;
+  buttonText?: string;
   children?: React.ReactNode;
   className?: string;
   handleClick?: () => void;
@@ -55,7 +55,7 @@ const MeetingModal = ({
               />
             )}{' '}
             &nbsp;
-            {buttonText || 'Schedule Meeting'}
+            {buttonText ?? 'Schedule Meeting'}
           </Button>
         </div>
       </DialogContent>

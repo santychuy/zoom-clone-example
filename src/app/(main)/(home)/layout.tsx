@@ -1,9 +1,19 @@
+import type { Metadata } from 'next';
+
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 
 interface HomeLayoutProps {
   children: React.ReactNode;
 }
+
+export const metadata: Metadata = {
+  title: 'Santychuy Zoom Clone',
+  description: 'Example complete app of Zoom',
+  icons: {
+    icon: '/icons/logo.svg'
+  }
+};
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
