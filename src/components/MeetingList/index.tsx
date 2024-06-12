@@ -15,6 +15,7 @@ import ReactDatePicker from 'react-datepicker';
 import MeetingCard from '../MeetingCard';
 import MeetingModal from '../MeetingModal';
 import { Textarea } from '../ui/textarea';
+import { Input } from '../ui/input';
 
 const MeetingList = () => {
   const router = useRouter();
@@ -67,7 +68,7 @@ const MeetingList = () => {
     }
   };
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/${callDetails?.id}`;
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -97,7 +98,7 @@ const MeetingList = () => {
         title="View Recordings"
         description="Meeting recordings"
         className="bg-yellow-500"
-        handleClick={() => router.push('/recordings')}
+        handleClick={() => router.push('/recording')}
       />
 
       {!callDetails ? (
@@ -150,6 +151,36 @@ const MeetingList = () => {
           buttonIcon="/icons/copy.svg"
         />
       )}
+
+      <MeetingModal
+        isOpen={meetingState === 'isJoiningMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Type the link here"
+        className="text-center"
+        buttonText="Join Meeting"
+        handleClick={() =>
+          router.push(
+            process.env.NODE_ENV === 'development'
+              ? `http://${values.link}`
+              : values.link
+          )
+        }
+      >
+        <Input
+          placeholder="Meeting link"
+          className="border-none bg-dark-2 focus-visible:ring-0 focus-visible:ring-offset-0"
+          onChange={(e) => setValues({ ...values, link: e.target.value })}
+        />
+      </MeetingModal>
+
+      <MeetingModal
+        isOpen={meetingState === 'isInstantMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
+        className="text-center"
+        buttonText="Start Meeting"
+        handleClick={createMeeting}
+      />
     </section>
   );
 };
