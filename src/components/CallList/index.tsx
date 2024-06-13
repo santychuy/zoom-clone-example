@@ -82,7 +82,7 @@ const CallList = ({ type }: CallListProps) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 xl:grid-cols-2 2xl:grid-cols-3">
       {calls.length > 0 ? (
         /* TODO: Improve this with new version of Typescript to detect if using type Call or CallRecording */
         calls.map((call) => (
