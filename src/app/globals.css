@@ -81,6 +81,10 @@
 
 .cl-button {
   color: #ffffff;
+
+  &:hover {
+    color: #ffffff;
+  }
 }
 
 .glassmorphism {
